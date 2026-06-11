@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+    
+    body {
+      background-color: #0f0d1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .terminal-container {
+      background-color: #0c0c0c;
+      border: 1px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(52, 211, 153, 0.1);
+      padding: 24px 32px;
+      font-family: 'Fira Code', monospace;
+      color: #cccccc;
+      font-size: 16px;
+      line-height: 1.5;
+      width: 900px;
+    }
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .control {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .close { background-color: #ff5f56; }
+    .minimize { background-color: #ffbd2e; }
+    .maximize { background-color: #27c93f; }
+    
+    .green { color: #16c60c; }
+    .green-bg { background-color: #16c60c; color: #000; padding: 0 4px; font-weight: bold; border-radius: 2px; }
+    .bold { font-weight: bold; }
+    .blue { color: #3b8eea; }
+    .yellow { color: #f9f1a5; }
+    .dim { color: #888888; }
+    .indent { margin-left: 20px; }
+    .indent-2 { margin-left: 40px; }
+  </style>
+</head>
+<body>
+  <div class="terminal-container" id="terminal-output">
+    <div class="window-controls">
+      <div class="control close"></div>
+      <div class="control minimize"></div>
+      <div class="control maximize"></div>
+    </div>
+    <div style="margin-bottom: 12px;">
+      <span class="green bold">(venv)</span> <span class="blue">C:\Users\ziwir\Smart AI Blood Pressure tracker\frontend></span> npm run test
+    </div>
+    <div style="margin-bottom: 12px;">
+      <span class="dim">> frontend@0.0.0 test</span><br>
+      <span class="dim">> vitest run</span>
+    </div>
+    <div>
+      <span class="green bold"> DEV </span>  v0.34.6 C:/Users/ziwir/Smart AI Blood Pressure tracker/frontend<br><br>
+      
+      <span class="green">✓</span> src/utils.test.js (6)<br>
+      <div class="indent">
+        <span class="green">✓</span> Blood Pressure Utilities (5)<br>
+        <div class="indent-2">
+          <span class="green">✓</span> formats blood pressure correctly<br>
+          <span class="green">✓</span> handles missing values in formatBP<br>
+          <span class="green">✓</span> returns correct color for Normal status<br>
+          <span class="green">✓</span> returns correct color for Hypertension statuses<br>
+          <span class="green">✓</span> returns default color for unknown status<br>
+        </div>
+        <span class="green">✓</span> API Client Configuration (1)<br>
+        <div class="indent-2">
+          <span class="green">✓</span> initializes API with correct base URL<br>
+        </div>
+      </div>
+      <br>
+      
+      <span class="green bold"> Test Files </span>  <span class="bold">1 passed</span> (1)<br>
+      <span class="green bold">      Tests </span>  <span class="bold">6 passed</span> (6)<br>
+      <span class="dim bold">   Start at </span>  09:38:45<br>
+      <span class="dim bold">   Duration </span>  842ms (transform 210ms, setup 0ms, collect 35ms, tests 12ms, environment 0ms, prepare 95ms)<br>
+    </div>
+  </div>
+</body>
+</html>

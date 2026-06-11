@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+    
+    body {
+      background-color: #0f0d1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .code-container {
+      background-color: #1a1625;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(236, 72, 153, 0.1);
+      padding: 24px 32px;
+      font-family: 'Fira Code', monospace;
+      color: #e2e8f0;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 800px;
+    }
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .control {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .close { background-color: #ff5f56; }
+    .minimize { background-color: #ffbd2e; }
+    .maximize { background-color: #27c93f; }
+    
+    /* Syntax Highlighting */
+    .keyword { color: #ec4899; } /* Pink */
+    .builtin { color: #a78bfa; } /* Purple */
+    .string { color: #34d399; } /* Green */
+    .comment { color: #64748b; font-style: italic; }
+    .function { color: #60a5fa; } /* Blue */
+    .class { color: #fbbf24; } /* Amber */
+    .number { color: #f87171; } /* Red */
+    .operator { color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="code-container" id="code-snippet">
+    <div class="window-controls">
+      <div class="control close"></div>
+      <div class="control minimize"></div>
+      <div class="control maximize"></div>
+    </div>
+    <pre style="margin: 0;"><code><span class="comment"># backend/ai_engine.py</span>
+
+<span class="comment"># Determine Status (Simplified JNC 7 / ACC/AHA guidelines)</span>
+status <span class="operator">=</span> <span class="string">"Normal"</span>
+<span class="keyword">if</span> avg_sys <span class="operator">>=</span> <span class="number">140</span> <span class="keyword">or</span> avg_dia <span class="operator">>=</span> <span class="number">90</span>:
+    status <span class="operator">=</span> <span class="string">"Stage 2 Hypertension"</span>
+<span class="keyword">elif</span> avg_sys <span class="operator">>=</span> <span class="number">130</span> <span class="keyword">or</span> avg_dia <span class="operator">>=</span> <span class="number">80</span>:
+    status <span class="operator">=</span> <span class="string">"Stage 1 Hypertension"</span>
+<span class="keyword">elif</span> avg_sys <span class="operator">>=</span> <span class="number">120</span> <span class="keyword">and</span> avg_sys <span class="operator"><</span> <span class="number">130</span> <span class="keyword">and</span> avg_dia <span class="operator"><</span> <span class="number">80</span>:
+    status <span class="operator">=</span> <span class="string">"Elevated"</span>
+
+<span class="comment"># Determine Trend (Simple heuristic: compare last 3 vs all previous)</span>
+trend <span class="operator">=</span> <span class="string">"Stable"</span>
+<span class="keyword">if</span> <span class="builtin">len</span>(readings) <span class="operator">>=</span> <span class="number">5</span>:
+    recent_avg_sys <span class="operator">=</span> np.mean(systolies[<span class="operator">-</span><span class="number">3</span>:])
+    past_avg_sys <span class="operator">=</span> np.mean(systolies[:<span class="operator">-</span><span class="number">3</span>])
+    <span class="keyword">if</span> recent_avg_sys <span class="operator">></span> past_avg_sys <span class="operator">+</span> <span class="number">5</span>:
+        trend <span class="operator">=</span> <span class="string">"Rising"</span>
+    <span class="keyword">elif</span> recent_avg_sys <span class="operator"><</span> past_avg_sys <span class="operator">-</span> <span class="number">5</span>:
+        trend <span class="operator">=</span> <span class="string">"Falling"</span></code></pre>
+  </div>
+</body>
+</html>

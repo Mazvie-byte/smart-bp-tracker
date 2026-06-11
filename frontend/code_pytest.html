@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+    
+    body {
+      background-color: #0f0d1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .terminal-container {
+      background-color: #0c0c0c;
+      border: 1px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(52, 211, 153, 0.1);
+      padding: 24px 32px;
+      font-family: 'Fira Code', monospace;
+      color: #cccccc;
+      font-size: 16px;
+      line-height: 1.5;
+      width: 900px;
+    }
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .control {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .close { background-color: #ff5f56; }
+    .minimize { background-color: #ffbd2e; }
+    .maximize { background-color: #27c93f; }
+    
+    .green { color: #16c60c; }
+    .bold { font-weight: bold; }
+    .blue { color: #3b8eea; }
+    .yellow { color: #f9f1a5; }
+    .dim { color: #888888; }
+  </style>
+</head>
+<body>
+  <div class="terminal-container" id="terminal-output">
+    <div class="window-controls">
+      <div class="control close"></div>
+      <div class="control minimize"></div>
+      <div class="control maximize"></div>
+    </div>
+    <div style="margin-bottom: 8px;">
+      <span class="green bold">(venv)</span> <span class="blue">C:\Users\ziwir\Smart AI Blood Pressure tracker></span> pytest test_backend.py -v
+    </div>
+    <div>
+      <span class="bold">============================= test session starts =============================</span><br>
+      <span class="dim">platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\ziwir\AppData\Local\Programs\Python\Python311\python.exe</span><br>
+      <span class="dim">cachedir: .pytest_cache</span><br>
+      <span class="dim">rootdir: C:\Users\ziwir\Smart AI Blood Pressure tracker</span><br>
+      <span class="dim">configfile: pyproject.toml</span><br>
+      <span class="dim">plugins: anyio-4.12.1</span><br>
+      collecting ... collected 8 items<br>
+      <br>
+      test_backend.py::test_api_root <span class="green">PASSED</span>                                    [ 12%]<br>
+      test_backend.py::test_ai_engine_normal_bp <span class="green">PASSED</span>                         [ 25%]<br>
+      test_backend.py::test_ai_engine_stage1_hypertension <span class="green">PASSED</span>               [ 37%]<br>
+      test_backend.py::test_ai_engine_stage2_hypertension <span class="green">PASSED</span>               [ 50%]<br>
+      test_backend.py::test_ai_engine_trend_rising <span class="green">PASSED</span>                      [ 62%]<br>
+      test_backend.py::test_api_add_reading <span class="green">PASSED</span>                             [ 75%]<br>
+      test_backend.py::test_api_get_analysis_no_data <span class="green">PASSED</span>                    [ 87%]<br>
+      test_backend.py::test_register_and_login <span class="green">PASSED</span>                          [100%]<br>
+      <br>
+      <span class="green bold">============================== 8 passed in 1.07s ==============================</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+    
+    body {
+      background-color: #0f0d1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .code-container {
+      background-color: #1a1625;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(236, 72, 153, 0.1);
+      padding: 24px 32px;
+      font-family: 'Fira Code', monospace;
+      color: #e2e8f0;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 800px;
+    }
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .control {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .close { background-color: #ff5f56; }
+    .minimize { background-color: #ffbd2e; }
+    .maximize { background-color: #27c93f; }
+    
+    /* Syntax Highlighting */
+    .keyword { color: #ec4899; } /* Pink */
+    .builtin { color: #a78bfa; } /* Purple */
+    .string { color: #34d399; } /* Green */
+    .comment { color: #64748b; font-style: italic; }
+    .function { color: #60a5fa; } /* Blue */
+    .class { color: #fbbf24; } /* Amber */
+    .decorator { color: #a78bfa; }
+    .type { color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="code-container" id="code-snippet">
+    <div class="window-controls">
+      <div class="control close"></div>
+      <div class="control minimize"></div>
+      <div class="control maximize"></div>
+    </div>
+    <pre style="margin: 0;"><code><span class="comment"># backend/models.py</span>
+<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel
+<span class="keyword">from</span> typing <span class="keyword">import</span> List, Optional
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+<span class="keyword">class</span> <span class="class">BloodPressureReading</span>(BaseModel):
+    systolic: <span class="builtin">int</span>
+    diastolic: <span class="builtin">int</span>
+    heart_rate: <span class="builtin">int</span>
+    timestamp: datetime = datetime.now()
+    notes: Optional[<span class="builtin">str</span>] = <span class="builtin">None</span>
+    tags: List[<span class="builtin">str</span>] = []
+
+<br/>
+<span class="comment"># backend/main.py</span>
+<span class="decorator">@app.post</span>(<span class="string">"/readings"</span>, response_model=BloodPressureReading)
+<span class="keyword">def</span> <span class="function">add_reading</span>(reading: BloodPressureReading, username: <span class="builtin">str</span> = Query(default=<span class="string">"guest"</span>)):
+    reading_dict = reading.model_dump()
+    reading_dict[<span class="string">"timestamp"</span>] = reading_dict[<span class="string">"timestamp"</span>].isoformat()
+    add_user_reading(username, reading_dict)
+    <span class="keyword">return</span> reading</code></pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    
+    body {
+      background-color: #0f0d1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .chart-container {
+      background-color: #1a1625;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      padding: 30px;
+      width: 800px;
+      height: 500px;
+      position: relative;
+    }
+    h2 {
+      color: #e2e8f0;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .watermark {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container" id="chart-wrapper">
+    <h2>API Endpoint Latencies (ms)</h2>
+    <canvas id="latencyChart"></canvas>
+    <div class="watermark">Smart AI Blood Pressure Tracker</div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('latencyChart').getContext('2d');
+    
+    // Gradient for bars
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(236, 72, 153, 1)'); // Pink
+    gradient.addColorStop(1, 'rgba(236, 72, 153, 0.3)');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['POST /register', 'POST /login', 'GET /readings', 'POST /readings', 'GET /analysis', 'POST /chat'],
+        datasets: [{
+          label: 'Average Response Time (ms)',
+          data: [120, 85, 45, 60, 110, 850],
+          backgroundColor: gradient,
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 1,
+          borderRadius: 6,
+          barPercentage: 0.6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            backgroundColor: 'rgba(15, 13, 26, 0.9)',
+            titleColor: '#e2e8f0',
+            bodyColor: '#e2e8f0',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                return context.raw + ' ms';
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.05)',
+              drawBorder: false,
+            },
+            ticks: {
+              color: '#94a3b8',
+              font: { family: 'Inter', size: 13 }
+            },
+            title: {
+              display: true,
+              text: 'Latency (ms)',
+              color: '#94a3b8',
+              font: { family: 'Inter', size: 14, weight: 600 }
+            }
+          },
+          x: {
+            grid: {
+              display: false,
+              drawBorder: false,
+            },
+            ticks: {
+              color: '#e2e8f0',
+              font: { family: 'Inter', size: 13 }
+            }
+          }
+        },
+        animation: {
+          duration: 0 // Disable animation for instant rendering for Puppeteer
+        }
+      }
+    });
+  </script>
+</body>
+</html>

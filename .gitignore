@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+backend/venv/
+backend/data/
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+
+# Screenshots & temp files
+*.png
+*.log
+docx_content.txt
+pptx_content.txt
+pytest_output.txt
+
+# Large files
+*.docx
+*.pptx
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Environment
+.env
+.env.local

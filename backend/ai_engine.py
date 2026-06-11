@@ -1,5 +1,5 @@
 from typing import List
-from .models import BloodPressureReading, AnalysisResult, HabitSuggestion
+from models import BloodPressureReading, AnalysisResult, HabitSuggestion
 import numpy as np
 
 def analyze_readings(readings: List[BloodPressureReading]) -> AnalysisResult:

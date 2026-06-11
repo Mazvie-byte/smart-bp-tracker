@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
-from .models import BloodPressureReading, AnalysisResult, HabitSuggestion, ChatRequest, UserRegister, UserLogin, UserResponse
-from .ai_engine import analyze_readings, generate_habits
-from .storage import register_user, verify_user, get_user_readings, add_user_reading
+from models import BloodPressureReading, AnalysisResult, HabitSuggestion, ChatRequest, UserRegister, UserLogin, UserResponse
+from ai_engine import analyze_readings, generate_habits
+from storage import register_user, verify_user, get_user_readings, add_user_reading
 
 app = FastAPI(title="Blood Pressure Assistant API")
 
